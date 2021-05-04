@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: vets-service
+  name: vets-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      io.kompose.service: vets-service    
+  template:
+    metadata:
+      labels:
+        io.kompose.service: vets-service
+    spec:
+      containers:
+        - image: jamesclarusway/petclinic-vets-service
+          name: vets-service
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8083
+# for all other microservices except config-server and discovery-server
+      initContainers:
+      - name: init-discovery-server
+        image: busybox
+        imagePullPolicy: IfNotPresent
+        command: ['sh', '-c', 'until nc -z discovery-server:8761; do echo waiting for discovery-server; sleep 2; done;']
+      restartPolicy: Always
