@@ -5,7 +5,7 @@ metadata:
     io.kompose.service: vets-service
   name: vets-service
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       io.kompose.service: vets-service    
@@ -20,6 +20,11 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8083
+          # env:
+          # - name: MYSQL_ROOT_PASSWORD
+          #   value: "petclinic"
+          # - name: MYSQL_DATABASE
+          #   value: "petclinic"
 # for all other microservices except config-server and discovery-server
       initContainers:
       - name: init-discovery-server

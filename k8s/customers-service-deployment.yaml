@@ -5,7 +5,7 @@ metadata:
     io.kompose.service: customers-service
   name: customers-service
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       io.kompose.service: customers-service
@@ -20,6 +20,11 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8081
+          # env:
+          # - name: MYSQL_ROOT_PASSWORD
+          #   value: "petclinic"
+          # - name: MYSQL_DATABASE
+          #   value: "petclinic"
           resources: {}
 # for all other microservices except config-server and discovery-server
       initContainers:
