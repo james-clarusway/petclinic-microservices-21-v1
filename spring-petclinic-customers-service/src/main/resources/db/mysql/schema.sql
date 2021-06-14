@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS petclinic;
--- GRANT ALL PRIVILEGES ON petclinic.* TO pc@localhost IDENTIFIED BY 'pc';
+GRANT ALL PRIVILEGES ON petclinic.* TO pc@localhost IDENTIFIED BY 'pc';
 -- GRANT ALL PRIVILEGES ON petclinic.* TO 'clarusway'@'%' IDENTIFIED BY 'Clarusway_1';
-GRANT ALL PRIVILEGES ON petclinic.* TO 'root'@'%' IDENTIFIED BY 'petclinic';
+-- GRANT ALL PRIVILEGES ON petclinic.* TO 'root'@'%' IDENTIFIED BY 'petclinic';
 USE petclinic;
 
 CREATE TABLE IF NOT EXISTS types (
